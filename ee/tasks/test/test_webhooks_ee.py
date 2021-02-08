@@ -7,7 +7,7 @@ from ee.tasks.webhooks_ee import post_event_to_webhook_ee
 from posthog.models.action import Action
 from posthog.models.action_step import ActionStep
 from posthog.models.event import Event
-from posthog.test.base import BaseTest
+from posthog.test.base import TransactionBaseTest
 
 
 def _create_action(**kwargs):
@@ -19,7 +19,7 @@ def _create_action(**kwargs):
     return action
 
 
-class TestWebhooksEE(BaseTest):
+class TestWebhooksEE(TransactionBaseTest):
     @patch("requests.post")
     def test_post_event_to_webhook_ee(self, requests_post):
 
